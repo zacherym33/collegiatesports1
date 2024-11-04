@@ -111,6 +111,111 @@
     </div>
 </footer>
 
+<div class="carousel">
+    <a class="carousel-item" href="#football!"><img src="images/90.jpeg" alt="Football Game"></a>
+    <a class="carousel-item" href="#football!"><img src="images/B3-FX291_BAKER_M_20200117102822.jpg" alt="Football Game"></a>
+    <a class="carousel-item" href="#basketball!"><img src="images/cbb-1-363-graphic.jpg" alt="College Basketball"></a>
+    <a class="carousel-item" href="#baseball!"><img src="images/a2fk6csrmv20dy2vdv98.jpeg" alt="Baseball Teams"></a>
+    <a class="carousel-item" href="#volleyball!"><img src="images/GettyImages-1635548672-e1693480521657.jpg" alt="Volleyball Match"></a>
+ </div>
+ 
+ <ul class="collapsible">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">sports_basketball</i>Basketball Highlights</div>
+        <div class="collapsible-body">
+            <span>Catch up on the latest basketball highlights, including game-winning shots and standout plays from college tournaments.</span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">sports_football</i>Football Schedule</div>
+        <div class="collapsible-body">
+            <span>Stay updated on upcoming football games, with schedules, matchups, and key players to watch this season.</span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">sports_soccer</i>Soccer Teams</div>
+        <div class="collapsible-body">
+            <span>Explore information on top collegiate soccer teams, their rankings, recent matches, and star players.</span>
+        </div>
+    </li>
+</ul>
+
+<script>
+    // Initialize modal
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+
+    // Function to display selected pastry
+    function displayPastry() {
+        const selectedPastry = document.querySelector('input[name="pastry"]:checked').value;
+        document.getElementById('pastry-response').innerText = `You selected: ${selectedPastry}`;
+    }
+    // Function to handle email subscription form submission
+    function submitEmail(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        document.getElementById('email-response').innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+        document.getElementById('email').value = ''; // Clear the input
+
+
+        // Display modal
+        const modalText = document.getElementById('modal-content-text');
+        modalText.innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+        const modal = M.Modal.getInstance(document.getElementById('modal1'));
+        modal.open();
+    }
+</script>
+
+<div id="radio-section" class="section container">
+    <h2>Select Your Favorite College Sport</h2>
+    <form>
+        <p>
+            <label>
+                <input name="sport" type="radio" value="Basketball" onclick="displaySport(this.value)"/>
+                <span>Basketball</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="sport" type="radio" value="Football" onclick="displaySport(this.value)"/>
+                <span>Football</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="sport" type="radio" value="Soccer" onclick="displaySport(this.value)"/>
+                <span>Soccer</span>
+            </label>
+        </p>
+    </form>
+    <div id="sport-response"></div>
+ </div>
+ 
+ <script>
+    function displaySport(sport) {
+        const responseDiv = document.getElementById("sport-response");
+        responseDiv.textContent = `You selected: ${sport}`;
+    }
+ </script>
+ 
+
+<!-- Email Feedback Section -->
+<div id="feedback-section" class="section container">
+    <h2>Subscribe for Updates</h2>
+    <form onsubmit="submitEmail(event)">
+        <div class="input-field">
+            <input id="email" type="email" required>
+            <label for="email">Email</label>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Subscribe</button>
+    </form>
+    <div id="email-response"></div>
+</div>
+
+
 <!-- Materialize JS for any required components -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
